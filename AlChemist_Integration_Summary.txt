@@ -1,0 +1,81 @@
+
+✅ AlChemist – ChatGPT/Gemini Integration Summary
+Date: April 24, 2025
+
+📁 Folder Structure
+D:\deepsearch-ai-agent\frontend\
+├── .env.local
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── src\
+│   ├── app\
+│   │   ├── page.tsx
+│   │   ├── globals.css
+│   │   └── api\
+│   │       └── ask\
+│   │           └── route.ts
+│   └── components\
+│       └── ChatBox.tsx
+
+🔐 .env.local Setup
+GEMINI_API_KEY=your_real_key_here
+
+💡 Gemini API Integration
+- Using @google/generative-ai
+- Model: gemini-1.5-pro-latest
+- Streaming supported via generateContentStream(prompt)
+- Route: src/app/api/ask/route.ts
+
+💬 Chat Flow Summary
+
+ChatBox.tsx
+- Handles input, response, loading state
+- Sends prompt to /api/ask
+- Shows streaming markdown response
+- Smart buttons: Ask | Regenerate | Clear History
+- Optionally: Suggestions & localStorage support
+
+page.tsx
+- Entry point: wraps <ChatBox /> inside Tailwind layout
+
+route.ts
+- Handles POST, streams Gemini result back to frontend
+- Logs errors for transparency
+
+🎨 TailwindCSS Styling
+- Included in globals.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+- Dark mode enabled in tailwind.config.js:
+darkMode: "class"
+
+✅ Features Done
+- ChatGPT-style layout (sidebar + chat)
+- Gemini 1.5 API with streaming
+- Markdown rendering
+- Professional UI with dark mode
+- Regenerate + Stop button logic
+- Error handling and fallbacks
+
+🧠 Suggestions (Optional / To-do)
+- Add persistent chat history via localStorage or DB
+- Export/share chat as Markdown or PDF
+- Add voice-to-text input
+- Add authentication
+
+🚀 Run Dev Again
+npm install
+npm run dev
+
+📌 Restore Guide
+If deleted:
+1. Restore .env.local
+2. Paste or recreate all files above
+3. npm install then npm run dev

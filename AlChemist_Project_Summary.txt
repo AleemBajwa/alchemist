@@ -1,0 +1,100 @@
+🧾 AlChemist Project Summary
+Chat Interface Inspired by ChatGPT (Powered by Gemini)
+
+✅ Project Name
+AlChemist – an AI conversational UI built with:
+- Next.js 13 (App Router)
+- Gemini API (via @google/generative-ai)
+- TailwindCSS for styling
+- ReactMarkdown for formatting
+- Turbopack dev environment
+
+✅ Core Functionalities
+
+| Feature                  | Description |
+|--------------------------|-------------|
+| ✍️ Prompt Input           | Type + submit messages |
+| 🤖 Gemini Integration     | Gemini 1.5 Pro API call on prompt |
+| 🧾 Markdown Responses     | Clean formatting with ReactMarkdown |
+| 🎨 Styled Chat Bubbles    | Dark user bubble, cyan AI bubble |
+| 📜 Scroll to latest       | Auto-scrolls on new message |
+| 💬 One Sidebar Layout     | Clean, no duplicates |
+| 🧠 Responsive Ready       | Base layout supports responsiveness |
+
+✅ Layout Breakdown
+
+🧱 Layout File: src/app/layout.tsx
+- Sidebar is now embedded directly
+- Sidebar color: #002060 (RGB: 0, 32, 96)
+- White font, minimal hover styling
+- Includes navigation + footer
+
+🗂 Main Page: src/app/page.tsx
+- Renders only <ChatBox />
+- No sidebar duplication
+
+✅ Chat Component: ChatBox.tsx
+- Stored at: src/components/ChatBox.tsx
+- Handles user input, streaming prompt to /api/ask
+- Messages stored as:
+  { role: "user" | "assistant"; content: string }
+
+Message Styles:
+| Role        | Background | Font     | Notes         |
+|-------------|------------|----------|---------------|
+| User        | #1f1f1f    | White    | Bold & right  |
+| Assistant   | #c2f0f7    | Black    | Clean & left  |
+
+✅ Backend: src/app/api/ask/route.ts
+- Imports and initializes Gemini using your API key
+- Calls model gemini-1.5-pro-latest
+- Sends back raw .text() response
+
+✅ Environment: .env.local
+GEMINI_API_KEY=AIzaSy********YOUR_KEY
+
+✅ Tailwind Setup
+
+tailwind.config.js includes:
+  plugins: [require("@tailwindcss/typography")],
+  theme: {
+    extend: {
+      animation: {
+        "fade-in-up": "fadeInUp 0.4s ease-out",
+      },
+      keyframes: {
+        fadeInUp: {
+          "0%": { opacity: 0, transform: "translateY(10px)" },
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
+      },
+    },
+  }
+
+✅ Packages Installed
+
+npm install @google/generative-ai react-markdown @tailwindcss/typography
+
+✅ Development Commands
+
+npm run dev          # start local dev server
+npm audit fix --force # optional: fix vulnerabilities
+
+✅ Cleaned Up Issues
+
+| ✅ Fix                              | 🛠 Action Taken                      |
+|------------------------------------|-------------------------------------|
+| ❌ Duplicate sidebar               | Removed <aside> from page.tsx       |
+| ❌ White gap in layout             | Was caused by that duplicate sidebar |
+| ❌ Glow effect on user font        | Replaced with solid white (text-white) |
+| ❌ Low contrast response           | Set AI bubble to light cyan + black text |
+| ❌ Extra spacing                   | Fixed padding & layout spacing     |
+
+🔮 Next Steps (Optional Ideas)
+
+- Add “AlChemist is thinking...” animation
+- Store + list chat history
+- Add user/AI avatars
+- Make layout mobile-responsive
+- Switch between models (ChatGPT / Gemini)
+- Export/print/download chat

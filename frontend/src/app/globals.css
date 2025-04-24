@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to bottom, #0e1d31, #1f4e78);
+  color: #ffffff;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(6px);
+}
+
+.glow-text {
+  text-shadow: 0 0 4px #00ffff, 0 0 10px #00ffffaa;
+}
+
+.dot-flash::after {
+  content: '...';
+  animation: dots 1.2s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #00ffff88, 0 0 10px #00ffff88;
+  }
+  50% {
+    box-shadow: 0 0 20px #00ffffaa, 0 0 30px #00ffffaa;
+  }
+  100% {
+    box-shadow: 0 0 5px #00ffff88, 0 0 10px #00ffff88;
+  }
+}
+
+.glow-border {
+  animation: glow 2s infinite;
+}
+
+/* 🔮 Mystic Orb Loader */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: radial-gradient(ellipse at center, #0e1d31, #1f4e78);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease;
+}
+
+.loader-orb {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00ffff 0%, #006b96 70%, #003344 100%);
+  box-shadow: 0 0 20px #00ffff99, 0 0 40px #00ffff55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.loader-text {
+  margin-top: 16px;
+  color: #00ffff;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px #00ffffaa;
+  animation: shimmerText 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px #00ffff99, 0 0 20px #00ffff55;
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 25px #00ffffbb, 0 0 50px #00ffff66;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px #00ffff99, 0 0 20px #00ffff55;
+  }
+}
+
+@keyframes shimmerText {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
