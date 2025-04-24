@@ -1,6 +1,7 @@
 ﻿{
   "name": "alchemist",
   "version": "1.0.0",
+  "description": "AlChemist - AI-powered assistant",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
