@@ -1,6 +1,5 @@
 {
   "name": "alchemist",
   "version": "1.0.0",
-  "dummy": true,
-  ...
+  "dummy": true
 }
